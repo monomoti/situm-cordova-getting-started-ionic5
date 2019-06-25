@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Ionic Blank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngIf="buildings">
+    <ion-item *ngFor="let building of buildings" (click)="showBuilding(building)">
+      <p>{{building.buildingIdentifier}}</p>
+      <p>{{building.name}}</p>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

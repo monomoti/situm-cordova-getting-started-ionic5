@@ -1,0 +1,111 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>positioning</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defaultHref"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{building.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <map-button building="{{building | json}}"
+              (showBuildingMap)="showMap($event)"></map-button>
+              
+  <ion-row>
+    <ion-col>
+      <ion-button 
+      size="small" expand="full" 
+      color="light" 
+      (click)="showPois()"
+      [disabled]="mapHidden()">Show POIs</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6">
+      <ion-button 
+              expand="full" 
+              size="small" 
+              color="light" 
+              (click)="startPositioning()"
+              [disabled]="mapHidden()">Start positioning</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button 
+              expand="full" 
+              size="small" 
+              color="dark" 
+              (click)="stopPositioning()"
+              [disabled]="positioningStopped()">Stop Positioning</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-button
+              size="small"
+              expand="full" 
+              color="light" 
+              (click)="showRoute()"
+              [disabled]="routeConditionsNotSet()">Show default route</ion-button>
+      <ion-item>
+        <ion-checkbox [checked]="accessible" 
+                      (ionChange)="updateAccessible()"
+                      [disabled]="routeConditionsNotSet()"></ion-checkbox>
+        <ion-label>Accessible</ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6">
+      <ion-button 
+              expand="full" 
+              size="small" 
+              color="light" 
+              (click)="requestNavigation()"
+              [disabled]="navigationConditionsNotSet()">Nav Updates</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button
+              expand="full" 
+              size="small" 
+              color="dark" 
+              (click)="removeNavigation()"
+              [disabled]="navigationConditionsNotSet()">Remove Nav</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="6">
+      <ion-button
+              expand="full" 
+              size="small" 
+              color="light" 
+              (click)="clearCache()">Clear cache</ion-button>
+    </ion-col>
+    <ion-col size="6">
+      <ion-button 
+              expand="full" 
+              size="small" 
+              color="dark" 
+              (click)="stablishCache()">Stablish cache</ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-item>
+    <ion-row class="map">
+      <ion-col class="map">
+        <div #map id="map"></div>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+</ion-content>
