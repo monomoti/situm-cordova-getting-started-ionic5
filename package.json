@@ -28,11 +28,14 @@
     "@ionic/angular": "^4.1.0",
     "@ionic/storage": "^2.2.0",
     "cordova-android": "8.0.0",
-    "cordova-ios": "5.0.1",
-    "cordova-plugin-googlemaps": "2.6.2",
+    "cordova-common": "^3.2.0",
+    "cordova-ios": "^5.0.1",
+    "cordova-plugin-googlemaps": "^2.6.2",
     "cordova-sqlite-storage": "3.2.0",
     "cordova.plugins.diagnostic": "5.0.0",
     "core-js": "^2.5.4",
+    "ionic": "^5.2.5",
+    "ios-deploy": "^1.9.4",
     "rxjs": "~6.5.1",
     "situm-cordova-plugin-official": "1.14.5",
     "tslib": "^1.9.0",
@@ -48,6 +51,7 @@
     "@angular/compiler-cli": "~7.2.2",
     "@angular/language-service": "~7.2.2",
     "@ionic/angular-toolkit": "~1.5.1",
+    "@ionic/app-scripts": "^3.2.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~12.0.0",
@@ -80,16 +84,18 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "situm-cordova-plugin-official": {},
+      "cordova-sqlite-storage": {},
+      "cordova.plugins.diagnostic": {},
       "cordova-plugin-googlemaps": {
+        "PLAY_SERVICES_VERSION": "15.0.1",
+        "ANDROID_SUPPORT_V4_VERSION": "27.+",
         "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
         "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
-      },
-      "cordova-sqlite-storage": {},
-      "cordova.plugins.diagnostic": {}
+      }
     },
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
