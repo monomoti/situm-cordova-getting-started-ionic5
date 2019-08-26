@@ -1,7 +1,6 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
 import { NavController, Platform, ToastController, LoadingController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import {USER_EMAIL, USER_API_KEY} from '../services/situm.service';
 
 declare var cordova: any;
 
@@ -13,6 +12,7 @@ declare var cordova: any;
 export class HomePage {
 
   public buildings: any[] = [];
+  defaultHref = '/settings';
 
   loading: any;
 
@@ -26,9 +26,14 @@ export class HomePage {
   ) {}
 
   ionViewDidEnter() {
+
     this.platform.ready().then(() => {
-      cordova.plugins.Situm.setApiKey(USER_EMAIL, USER_API_KEY);
-      this.fetchBuildings();
+      this.storage.get("situmEmail").then((email)=>{
+        this.storage.get("situmKey").then((key)=>{
+          cordova.plugins.Situm.setApiKey(email, key);
+          this.fetchBuildings();            
+        });        
+      });
     }).catch(error => {
       console.log(error);
     });
@@ -56,7 +61,6 @@ export class HomePage {
   }
 
   async showBuilding(building) {
-    // this.navCtrl.push(PositioningPage, { building: building });
     await this.storage.set('building', building);
     await this.navCtrl.navigateForward('/positioning');
   }

@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-item>
+        <ion-label position="stacked">EMail<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="text" [(ngModel)]="situmEmail"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">API Key<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input required type="text" [(ngModel)]="situmKey"></ion-input>
+      </ion-item> 
+      
+      <section>
+          <ion-button expand="block" [disabled]="isAccountEmpty()" (click)="showList()">Show Buildings</ion-button>
+      </section>      
+
+</ion-content>
